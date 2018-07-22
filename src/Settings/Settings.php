@@ -369,7 +369,7 @@ class Settings
      */
     protected function valueToJson($value)
     {
-        return json_encode([$value]);
+        return (string) $value;
     }
 
     /**
@@ -415,7 +415,7 @@ class Settings
     protected function getAllSettingsFlat()
     {
         return $this->getAllSettings()->flatMap(function (Model $model) {
-            return [$model->key => json_decode($model->value)[0]];
+            return [$model->key => $model->value];
         });
     }
 
